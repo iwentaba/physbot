@@ -1,5 +1,9 @@
 # physbot
-building a simple robot
+
+Installation
+Python 3
+(optional) create virtualenv
+(in env) pip install -r requirements.txt
 
 Main hardware modules:
 
