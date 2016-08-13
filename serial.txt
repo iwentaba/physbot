@@ -1,0 +1,4 @@
+left = 0
+down = 1
+up = 2
+right = 3
