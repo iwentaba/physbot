@@ -4,6 +4,12 @@ import threading
 from blinker import signal
 import sys
 import struct
+from enum import Enum
+
+GO_LEFT = 0
+GO_BACK = 1
+GO_FORWARD = 2
+GO_RIGHT = 3
 
 class ArduinoInterface():
     def __init__(self, port='/dev/ttyACM0',baud=38400):
@@ -24,16 +30,16 @@ class ArduinoInterface():
         self.serial.write(byte_mess)
     
     def go_left(self):
-        self.send(0)
+        self.send(GO_LEFT)
         
-    def go_down(self):
-        self.send(1)
+    def go_back(self):
+        self.send(GO_BACK)
     
-    def go_up(self):
-        self.send(2)
+    def go_forward(self):
+        self.send(GO_FORWARD)
 
     def go_right(self):
-        self.send(3)
+        self.send(GO_RIGHT)
 
     def _listen(self):
         with self.lock:

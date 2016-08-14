@@ -1,6 +1,9 @@
-long i = 0;
-int j = 0;
-int inFunc;
+int funRef;
+
+const char LEFT = 0;
+const char BACK = 1;
+const char FORWARD = 2;
+const char RIGHT = 3;
 
 void setup() {
   Serial.begin(38400);
@@ -9,54 +12,47 @@ void setup() {
 
 void loop() {
 
-//  if (i > 5000) {
-//    Serial.print("Blip ");
-//    Serial.println(j);
-//    i = 0;
-//    j++;
-//  }
-  
   if (Serial.available() > 0) {
-    inFunc = Serial.read();
-    chooseFun(inFunc);
+    funRef = Serial.read();
+    chooseFun(funRef);
   }
 
   delay(50);
-  //i++;
 }
 
 void chooseFun(int funNr) {
   switch (funNr) {
-    case 0:
-      doLeft();
+    case LEFT:
+      goLeft();
       break;
-    case 1:
-      doDown();
+    case BACK:
+      goBack();
       break;
-    case 2:
-      doUp();
+    case FORWARD:
+      goForward();
       break;
-    case 3:
-      doRight();  
+    case RIGHT:
+      goRight();  
+      break;
     default: 
       // throw err or something
     break;
   }
 }
 
-void doLeft() {
-  Serial.println("Go Left!");
+void goLeft() {
+  Serial.println("Going Left!");
 }
 
-void doDown() {
-  Serial.println("Go Down!");
+void goBack() {
+  Serial.println("Going Back!");
 }
 
-void doUp() {
-  Serial.println("Go Up!");
+void goForward() {
+  Serial.println("Going Forward!");
 }
 
-void doRight() {
-  Serial.println("Go Right!");
+void goRight() {
+  Serial.println("Going Right!");
 }
 

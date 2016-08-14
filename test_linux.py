@@ -34,10 +34,10 @@ while True:
         ard.go_left()
     elif keystr=='j':
         print('down\r')
-        ard.go_down()
+        ard.go_back()
     elif keystr=='k':
         print('up\r')
-        ard.go_up()
+        ard.go_forward()
     elif keystr=='l':
         print('right\r')
         ard.go_right()

@@ -1,2 +1,0 @@
-alias extbr=xrandr --output VGA1 --brightness 
-alias extbr=xrandr --output VGA1 --brightness 
