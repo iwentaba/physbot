@@ -10,6 +10,9 @@ GO_LEFT = 0
 GO_BACK = 1
 GO_FORWARD = 2
 GO_RIGHT = 3
+STOP = 4
+VEL_DOWN = 5
+VEL_UP = 6
 
 class ArduinoInterface():
     def __init__(self, port='/dev/ttyACM0',baud=38400):
@@ -40,6 +43,15 @@ class ArduinoInterface():
 
     def go_right(self):
         self.send(GO_RIGHT)
+    
+    def stop(self):
+        self.send(STOP)
+    
+    def vel_down(self):
+        self.send(VEL_DOWN):
+
+    def vel_up(self):
+        self.send(VEL_UP):
 
     def _listen(self):
         with self.lock:

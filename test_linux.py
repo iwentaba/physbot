@@ -41,6 +41,12 @@ while True:
     elif keystr=='l':
         print('right\r')
         ard.go_right()
+    elif keystr=='a':
+        ard.stop()
+    elif keystr=='q':
+        ard.vel_down()
+    elif keystr=='w':
+        ard.vel_up()
     sleep(0.01)
  
 curses.endwin()
