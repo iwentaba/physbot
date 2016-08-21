@@ -48,10 +48,10 @@ class ArduinoInterface():
         self.send(STOP)
     
     def vel_down(self):
-        self.send(VEL_DOWN):
+        self.send(VEL_DOWN)
 
     def vel_up(self):
-        self.send(VEL_UP):
+        self.send(VEL_UP)
 
     def _listen(self):
         with self.lock:

@@ -43,9 +43,9 @@ while True:
         ard.go_right()
     elif keystr=='a':
         ard.stop()
-    elif keystr=='q':
+    elif keystr=='s':
         ard.vel_down()
-    elif keystr=='w':
+    elif keystr=='d':
         ard.vel_up()
     sleep(0.01)
  

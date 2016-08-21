@@ -14,6 +14,7 @@ const char STOP = 4;
 const char VEL_DOWN = 5;
 const char VEL_UP = 6;
 
+char curFun = STOP;
 int funRef;
 int velocity = 255;
 
@@ -35,13 +36,25 @@ void loop() {
 
   if (Serial.available() > 0) {
     funRef = Serial.read();
-    chooseFun(funRef);
+//    chooseFun(funRef);
+    evalFun(funRef);
   }
+
+  executeFun(curFun);
 
   delay(50);
 }
 
-void chooseFun(int funNr) {
+void evalFun(char funChar) {
+  if (funChar == VEL_UP || funChar == VEL_DOWN) {
+    executeFun(funChar);
+  }
+  else {
+    curFun = funChar;
+  }
+} 
+
+void executeFun(int funNr) {
   switch (funNr) {
     case LEFT:
       goLeft();
@@ -71,7 +84,7 @@ void chooseFun(int funNr) {
 }
 
 void goLeft() {
-  Serial.println("Going Left!");
+  //Serial.println("Going Left!");
   analogWrite(MOTOR_L_PWM,velocity);
   analogWrite(MOTOR_R_PWM,velocity/3);
   
@@ -83,7 +96,7 @@ void goLeft() {
 }
 
 void goBack() {
-  Serial.println("Going Back!");
+  //Serial.println("Going Back!");
   analogWrite(MOTOR_L_PWM,velocity);
   analogWrite(MOTOR_R_PWM,velocity);
   
@@ -95,7 +108,7 @@ void goBack() {
 }
 
 void goStop() {
-  Serial.println("Going Back!");
+  //Serial.println("Going Back!");
   analogWrite(MOTOR_L_PWM,0);
   analogWrite(MOTOR_R_PWM,0);
   
@@ -107,7 +120,7 @@ void goStop() {
 }
 
 void goForward() {
-  Serial.println("Going Forward!");
+  //Serial.println("Going Forward!");
   analogWrite(MOTOR_L_PWM,velocity);
   analogWrite(MOTOR_R_PWM,velocity);
   
@@ -119,7 +132,7 @@ void goForward() {
 }
 
 void goRight() {
-  Serial.println("Going Right!");
+  //Serial.println("Going Right!");
   analogWrite(MOTOR_L_PWM,velocity/3);
   analogWrite(MOTOR_R_PWM,velocity);
   
@@ -131,19 +144,20 @@ void goRight() {
 }
 
 void velUp() {
-  setVelocity(velocity + 20)
+  setVelocity(velocity + 20);
 }
 
 void velDown() {
-  setVelocity(velocity - 20)
+  setVelocity(velocity - 20);
 }
 
 void setVelocity(int vel) {
   if (vel < 0) {
-    velocity = 0
+    vel = 0;
   }
   if (vel > 255) {
-    velocity = 255
+    vel = 255;
   }
+  velocity = vel;
 }
 
